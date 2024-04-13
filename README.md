@@ -4,20 +4,20 @@ This guide details the steps to set up and run the Django application with Djang
 
 ## Prerequisites
 
-- **Python 3.10**: Ensure Python 3.10 is installed and set as the global version in your development environment. We recommend using `pyenv` for managing Python versions.
+- **Python 3.11**: Ensure Python 3.11 is installed and set as the global version in your development environment. We recommend using `pyenv` for managing Python versions.
 - **Poetry**: This project uses Poetry for dependency management. If you haven't installed Poetry yet, follow the instructions on Poetry's official documentation.
 
 ## Setup Instructions
 
 after clone the project
 
-### 1. Setting Up Python 3.10 with `pyenv`
+### 1. Setting Up Python 3.11 with `pyenv`
 
-If you haven't installed Python 3.10, use `pyenv` to install and set it as your global Python version:
+If you haven't installed Python 3.11, use `pyenv` to install and set it as your global Python version:
 
 ```bash
-pyenv install 3.10 # Skip if already installed
-pyenv local 3.10
+pyenv install 3.11.8 # Skip if already installed
+pyenv local 3.11.8
 ```
 
 ### 2. Install Poetry
@@ -66,7 +66,7 @@ After the server starts, you can access the main application by visiting [http:/
 ## Troubleshooting
 
 If you encounter any issues during setup or running the project, ensure that:
-- You are using Python 3.10 as specified.
+- You are using Python 3.11.8 as specified.
 - You have activated the Poetry shell before running `poetry install` and `python manage.py runserver`.
 - All dependencies were successfully installed without errors.
 
