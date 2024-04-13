@@ -1,4 +1,4 @@
-# Auth with Django Ninja Project
+# Django Ninja Project
 
 This guide details the steps to set up and run the Django application with Django Ninja using Poetry for dependency management. Follow these instructions to get the project up and running on your local machine.
 
@@ -84,19 +84,38 @@ on `.vscode/settings.json`
 }
 ```
 
-## Create Apps
+## Creating Django Applications
+
+To create a new Django application, follow the steps below. Please ensure to replace `app_name` with the actual name of your application.
+
+1. **Create a new directory**: Navigate to the `apps` folder and create a new directory. The name of this directory should be the same as your `app_name`.
+
+2. **Initialize the Django application**: Run the following command in your terminal:
 
 ```bash
 django-admin startapp app_name apps/app_name
 ```
 
-In settings.py
+## Configuring Django Applications
+
+In your Django application, you will need to set up a configuration class in the `apps.py` file. Here's an example of how to do this:
+
+```python
+from django.apps import AppConfig
+
+class CoreConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.app_name"
+```
+The name of this should be the same as your `app_name`.
+
+## In settings.py
 
 INSTALLED_APPS
 
 ```python
 INSTALLED_APPS = [
     ...
-    "cj_auth_service.apps.auth_app.apps",
+    "apps.app_name",
 ]
 ```
