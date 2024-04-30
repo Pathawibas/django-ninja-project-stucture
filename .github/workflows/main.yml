@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display Environment Variables
-        run: echo "$DEPLOY_URL"  
+        run: echo "$DEPLOY_URL"
+      - name: Again
+        run: |
+          curl -X GET "${{ env.DEPLOY_URL }}"
 
