@@ -6,12 +6,11 @@ on:
 jobs:
   test_env:
     runs-on: ubuntu-latest
-    environment: develop
     steps:
       - name: Display Environment Variables
-        run: echo "$DEPLOY_URL ${{ env.DEPLOY_URL }}"
+        run: echo "$DEPLOY_URL ${{ vars.DEPLOY_URL }}"
       - name: Again
         run: |
-          curl -X GET "${{ env.DEPLOY_URL }}"
+          curl -X GET "${{ vars.DEPLOY_URL }}"
 
 
