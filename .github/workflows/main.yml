@@ -3,7 +3,7 @@ name: Test Environment and Secrets
 on: 
   workflow_dispatch:  # Trigger this workflow manually
 env:
-  env_var: "develop"
+  env_var: develop
 jobs:
   test_env:
     runs-on: ubuntu-latest
@@ -13,5 +13,7 @@ jobs:
       - name: Display Environment Variables
         run: |
           echo "GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"  # Example secret
-          echo "DEPLOY_URL : $DEPLOY_URL, : ${{ vars.DEPLOY_URL }} : ${{ env.DEPLOY_URL }} : ${{ secrets.DEPLOY_URL }}"
-
+          echo "DEPLOY_URL : $DEPLOY_URL, : ${{ vars.DEPLOY_URL }} : ${{ env.DEPLOY_URL }} : ${{ secrets.DEPLOY_URL }} : $TEST_VARS"
+        env:
+          DEPLOY_URL: ${{ vars.DEPLOY_URL }}
+          TEST_VARS: hello 
