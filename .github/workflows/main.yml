@@ -1,0 +1,12 @@
+name: Test Environment and Secrets
+
+on: 
+  workflow_dispatch:  # Trigger this workflow manually
+
+jobs:
+  test_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Environment Variables
+        run: echo "$DEPLOY_URL"  
+
