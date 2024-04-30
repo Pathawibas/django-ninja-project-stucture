@@ -2,13 +2,11 @@ on:
   workflow_dispatch:
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+  env_var: develop
 
 jobs:
   display-variables:
-    name: ${{ vars.JOB_NAME }}
-    # You can use configuration variables with the `vars` context for dynamic jobs
-    if: ${{ vars.USE_VARIABLES == 'true' }}
+    name: variable_reveal
     runs-on: ${{ vars.RUNNER }}
     environment: ${{ vars.ENVIRONMENT_STAGE }}
     steps:
