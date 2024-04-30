@@ -1,29 +1,18 @@
-on:
-  workflow_dispatch:
-env:
-  # Setting an environment variable with the value of a configuration variable
-  env_var: develop
+name: Test Environment and Secrets
+
+on: 
+  workflow_dispatch:  # Trigger this workflow manually
 
 jobs:
-  display-variables:
-    name: variable_reveal
-    runs-on: ${{ vars.RUNNER }}
-    environment: ${{ vars.ENVIRONMENT_STAGE }}
+  test_env:
+    runs-on: ubuntu-latest
+    env:
+        DEPLOY_URL: ${{ vars.DEPLOY_URL }}
     steps:
-    - name: Use variables
-      run: |
-        echo "repository variable : $REPOSITORY_VAR"
-        echo "deploy : $DEPLOY_URL"
-        echo "organization variable : $ORGANIZATION_VAR"
-        echo "overridden variable : $OVERRIDE_VAR"
-        echo "variable from shell environment : $env_var"
-      env:
-        REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
-        ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
-        OVERRIDE_VAR: ${{ vars.OVERRIDE_VAR }}
-        
-    - name: ${{ vars.HELLO_WORLD_STEP }}
-      if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
-      uses: actions/hello-world-javascript-action@main
-      with:
-        who-to-greet: ${{ vars.GREET_NAME }}
+      - name: Display Environment Variables
+        run: |
+          echo "GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"  # Example secret
+          echo "MY_CUSTOM_ENV_VAR: ${{ env.MY_CUSTOM_ENV_VAR }}" 
+          env | grep 'DEPLOY_'  # View environment variables starting with 'DEPLOY_'
+          echo "DEPLOY_URL : $DEPLOY_URL"
+
