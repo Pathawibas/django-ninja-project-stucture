@@ -13,5 +13,5 @@ jobs:
       - name: Display Environment Variables
         run: |
           echo "GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}"  # Example secret
-          echo "DEPLOY_URL : $DEPLOY_URL"
+          echo "DEPLOY_URL : $DEPLOY_URL, ${{ vars.DEPLOY_URL }}"
 
